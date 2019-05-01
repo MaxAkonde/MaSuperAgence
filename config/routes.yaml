@@ -1,3 +1,35 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+#########################################################
+#                                                       #
+#           STATIC PAGES ROUTES                         #
+#                                                       #
+#########################################################
+
+home:
+    path: /
+    controller: App\Controller\PageController::index
+    
+agent:
+    path: /agent
+    controller: App\Controller\PageController::agent
+    
+about:
+    path: /about
+    controller: App\Controller\PageController::about
+    
+blog:
+    path: /blog
+    controller: App\Controller\PageController::blog
+    
+contact:
+    path: /contact
+    controller: App\Controller\PageController::contact
+
+#########################################################
+#                                                       #
+#           END STATIC PAGES ROUTES                     #
+#                                                       #
+#########################################################
