@@ -1,0 +1,56 @@
+{% extends "admin.html.twig" %}
+
+{% block body %}
+    <div class="col-md-12">
+        {% for message in app.flashes('success') %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-box-header">
+                    <div class="panel-title">LISTE DES BIENS DISPONIBLE</div>
+                    <div class="panel-options">
+                        <a href="{{ path('admin.property.insert') }}" class="label label-success">
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="content-box-large box-with-header">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>TITRE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for property in properties %}
+                                    <tr>
+                                        <td>{{ property.id }}</td>
+                                        <td>{{ property.title }}</td>
+                                        <td>
+                                            <a href="{{ path('admin.property.delete', {id: property.id}) }}" class="btn btn-info btn-xs">Editer</a>
+                                            <form style="display: inline-block" method="POST" action="{{ path('admin.property.delete', {id: property.id}) }}" onsubmit="return confirm('Etes vous vraiment sur !?')">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ property.id) }}">
+                                                <button type="submit" class="btn btn-danger btn-xs">Supprimer</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

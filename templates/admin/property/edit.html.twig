@@ -1,0 +1,16 @@
+{% extends "admin.html.twig" %}
+
+{% block body %}
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-box-header">
+                    <div class="panel-title">EDITER LE BIEN</div>
+                </div>
+                <div class="content-box-large box-with-header">
+                    {{ include ('admin/property/_form.html.twig', {form: form, button:'Editer' }) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

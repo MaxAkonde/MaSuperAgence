@@ -33,3 +33,38 @@ contact:
 #           END STATIC PAGES ROUTES                     #
 #                                                       #
 #########################################################
+
+
+#########################################################
+#                                                       #
+#           ADMIN PROPERTY PAGES ROUTES                 #
+#                                                       #
+#########################################################
+
+admin.property.index:
+    path: /admin/property
+    controller: App\Controller\Admin\AdminPropertyController::index
+
+admin.property.insert:
+    path: /admin/property/insert
+    controller: App\Controller\Admin\AdminPropertyController::insert
+
+admin.property.edit:
+    path: /admin/property/{id}
+    controller: App\Controller\Admin\AdminPropertyController::edit
+    methods: 'GET|POST'
+    requirements:
+        id: '[0-9]'
+        
+admin.property.delete:
+    path: /admin/property/{id}
+    controller: App\Controller\Admin\AdminPropertyController::delete
+    methods: 'DELETE'
+    requirements:
+        id: '[0-9]'
+
+#########################################################
+#                                                       #
+#           END  ADMIN PROPERTY PAGES ROUTES            #
+#                                                       #
+#########################################################
