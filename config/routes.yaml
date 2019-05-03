@@ -34,6 +34,29 @@ contact:
 #                                                       #
 #########################################################
 
+#########################################################
+#                                                       #
+#           PROPERTY PAGES ROUTES                       #
+#                                                       #
+#########################################################
+
+property.index:
+    path: /property
+    controller: App\Controller\PropertyController::index
+    
+property.show:
+    path: /property/{slug}/{id}
+    controller: App\Controller\PropertyController::show
+    requirements:
+        slug: '^[a-z-]+$'
+        id: '[0-9]+'
+
+#########################################################
+#                                                       #
+#           END PROPERTY PAGES ROUTES                   #
+#                                                       #
+#########################################################
+
 
 #########################################################
 #                                                       #
@@ -61,7 +84,7 @@ admin.property.delete:
     controller: App\Controller\Admin\AdminPropertyController::delete
     methods: 'DELETE'
     requirements:
-        id: '[0-9]'
+        id: '[0-9]+'
 
 #########################################################
 #                                                       #
