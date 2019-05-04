@@ -36,6 +36,12 @@ class PropertyRepository extends ServiceEntityRepository {
                     ->setParameter('minsurface', $search->getMinSurface());
         }
         
+        if($search->getCity()) {
+            $query = $query
+                    ->andWhere('p.city = :city')
+                    ->setParameter('city', $search->getCity());
+        }
+        
         return $query->getQuery();
     }
 

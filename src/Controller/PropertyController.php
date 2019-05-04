@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Property;
 use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
 use App\Repository\PropertyRepository;
@@ -49,8 +50,18 @@ class PropertyController extends AbstractController {
         ]);
     }
 
-    public function show() {
-        return $this->render('property/index.html.twig');
+    public function show(Property $property, string $slug): Response {
+
+        if ($property->getSlug() !== $slug) {
+            return $this->redirectToRoute('property.show', [
+                        'id' => $property->getId(),
+                        'slug' => $property->getSlug()
+                            ], 301);
+        }
+
+        return $this->render('property/show.html.twig', [
+                    'property' => $property
+        ]);
     }
 
 }

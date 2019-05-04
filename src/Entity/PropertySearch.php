@@ -15,6 +15,11 @@ class PropertySearch {
      * @Assert\Range(min=10, max=400)
      */
     private $minSurface;
+    
+    /*
+     * @var string|null
+     */
+    private $city;
 
     /*
      * @return int|null
@@ -30,6 +35,14 @@ class PropertySearch {
 
     public function getMaxPrice(): ?int {
         return $this->maxPrice;
+    }
+    
+    /*
+     * @return string|null
+     */
+
+    public function getCity(): ?string {
+        return $this->city;
     }
 
     /*
@@ -49,6 +62,16 @@ class PropertySearch {
 
     public function setMaxPrice(?int $maxPrice): PropertySearch {
         $this->maxPrice = $maxPrice;
+        return $this;
+    }
+    
+    /*
+     * @params string|null $city
+     * @return PropertySearch
+     */
+
+    public function setCity(?string $city): PropertySearch {
+        $this->city = $city;
         return $this;
     }
 

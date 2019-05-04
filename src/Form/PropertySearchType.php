@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\PropertySearch;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,12 +27,20 @@ class PropertySearchType extends AbstractType {
                         'placeholder' => 'Surface minimale'
                     ]
                 ])
+                ->add('city', TextType::class, [
+                    'required' => false,
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'City'
+                    ]
+                ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults([
             'data_class' => PropertySearch::class,
+            'translation_domain' => 'forms',
             'method' => 'get',
             'csrf_protection' => false
         ]);
